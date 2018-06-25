@@ -1,0 +1,77 @@
+/*
+ |--------------------------------------------------------------------------
+ | Wrapper
+ |--------------------------------------------------------------------------
+ */
+
+.wrapper {
+    padding-top: $navbar-height;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Container modifiers
+|--------------------------------------------------------------------------
+*/
+
+.container {
+
+    &.is-tiny {
+        max-width: 400px;
+    }
+    &.is-small {
+        max-width: 600px;
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Loading mask
+|--------------------------------------------------------------------------
+*/
+
+.loading-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    text-align: center;
+    background-color: rgba($white-ter, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    @include transition(0.2s);
+
+    &.is-active {
+        visibility: initial;
+        opacity: 1;
+    }
+
+    &:after {
+        animation: spinAround 500ms infinite linear;
+        border: 3px solid $primary;
+        border-radius: $radius-rounded;
+        border-right-color: transparent;
+        border-top-color: transparent;
+        content: "";
+        display: block;
+        height: 2em;
+        position: relative;
+        width: 2em;
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Map
+|--------------------------------------------------------------------------
+*/
+
+#map {
+    width: 100%;
+    height: 100%;
+}

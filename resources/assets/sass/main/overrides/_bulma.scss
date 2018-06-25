@@ -1,0 +1,156 @@
+/*
+ |--------------------------------------------------------------------------
+ | Navigation
+ |--------------------------------------------------------------------------
+ */
+
+.navbar-item {
+
+    .icon.is-left {
+        margin-right: 12px;
+    }
+    .icon.is-right {
+        margin-left: 12px;
+    }
+
+    .navbar-link::after {
+        border-color: $grey;
+    }
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Menu
+ |--------------------------------------------------------------------------
+ */
+
+.menu-list {
+    // If a button is placed in a menu-list, 
+    // we want it to have the same style as the 
+    // rest of the links
+    button {
+        display: block;
+        font-weight: $weight-normal;
+        font-size: $size-normal;
+        color: $grey-dark;
+        background-color: transparent;
+        border-radius: 2px;
+        border: none;
+        box-shadow: none;
+        padding: 0.5em 0.75em;
+        margin: 0;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        outline: none;
+    }
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Form
+ |--------------------------------------------------------------------------
+ */
+
+.label {
+    font-size: 0.9em;
+
+    &:not(:last-child) {
+        margin-bottom: 0.3em;
+    }
+}
+
+.help {
+    margin-top: 0;
+    font-weight: $weight-semibold;
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Modal
+ |--------------------------------------------------------------------------
+ */
+
+.modal-card-head {
+    border: none;
+    background-color: #fff;
+    padding-bottom: 0;
+}
+
+.modal-card-foot {
+    border: none;
+    background-color: #fff;
+    padding-top: 0;
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Table
+ |--------------------------------------------------------------------------
+ */
+
+.table {
+    overflow-x: auto;
+}
+
+.b-table .table {
+
+    th, tr {
+        background-color: #fff;
+    }
+    @include desktop() {
+        border-color: $grey-lighter;
+    }
+}
+
+.table.has-mobile-cards tr {
+    background-color: #fff !important;
+    margin: 0 !important;
+    box-shadow: none;
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Dropdown Navigation
+ |--------------------------------------------------------------------------
+ */
+
+.navbar-dropdown .navbar-item {
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    width: 100%;
+    color: $black;
+    font-size: $size-small;
+    
+    &:hover {
+        background-color: whitesmoke;
+    }
+
+    .icon {
+        font-size: 1.5em;
+        color: $grey-light;
+    }
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Menu
+ |--------------------------------------------------------------------------
+ */
+
+.menu-list a.is-active {
+    background: rgba(0,0,0,0.05);
+    color: inherit;
+    position: relative;
+    &:after {
+        content: '';
+        display: block;
+        height: 100%;
+        width: 2px;
+        background-color: $grey-light;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}

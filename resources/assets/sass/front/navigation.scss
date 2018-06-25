@@ -1,0 +1,29 @@
+
+.navbar-link.is-account {
+
+    .icon {
+        font-size: 2em;
+        color: $grey;
+    }
+}
+
+.navbar-item.is-cart {
+    position: relative;
+    .is-cart-count {
+        position: absolute;
+        font-size: 0.7rem;
+        padding: 0.6rem;
+        height: 15px;
+        width: 15px;
+        top: 7px;
+        left: 31px;  
+    }
+    
+    .navbar-link {
+        padding-right: 1rem;
+
+        &:after {
+            display: none;
+        }
+    }   
+}

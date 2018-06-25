@@ -1,0 +1,94 @@
+/*
+ |--------------------------------------------------------------------------
+ | Import the initial variables
+ |--------------------------------------------------------------------------
+ */
+
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
+
+/*
+ |--------------------------------------------------------------------------
+ | Base colors
+ |--------------------------------------------------------------------------
+ */
+
+$black:        hsl(204, 0%, 4%);
+$black-bis:    hsl(204, 0%, 7%);
+$black-ter:    hsl(204, 0%, 14%);
+
+$grey-darker:  hsl(204, 0%, 21%);
+$grey-dark:    hsl(204, 0%, 29%);
+$grey:         hsl(204, 0%, 48%);
+$grey-light:   hsl(204, 0%, 71%);
+$grey-lighter: hsl(204, 0%, 86%);
+
+$white-darker: hsl(204, 0%, 88%);
+$white-dark:   hsl(204, 0%, 92%);
+$white-ter:    hsl(204, 0%, 96%);
+$white-bis:    hsl(204, 0%, 99%);
+$white:        hsl(204, 0%, 100%);
+
+$orange:       hsl(14, 100%, 53%);
+$yellow:       hsl(48,  100%, 67%);
+$green:        hsl(141, 57%, 51%);
+$turquoise:    hsl(171, 100%, 41%);
+$cyan:         hsl(204, 86%,  53%);
+$blue:         rgb(21, 111, 255);
+$purple:       hsl(271, 100%, 71%);
+$red:          hsl(0, 99%, 61%);
+
+/*
+ |--------------------------------------------------------------------------
+ | Brand colors
+ |--------------------------------------------------------------------------
+ */
+
+$primary: $green;
+$info: $cyan;
+$success: $green;
+$warning: $yellow;
+$danger: $red;
+$light: $white-ter;
+$dark: $grey-darker;
+
+/*
+ |--------------------------------------------------------------------------
+ | Typography
+ |--------------------------------------------------------------------------
+ */
+
+$text-color: $black;
+$text-color-soft: $grey;
+$side-navbar-width: 300px;
+
+$size-small: 0.8rem;
+$size-normal: $size-6;
+$size-medium: $size-5;
+$size-large: $size-4;
+
+$weight-light: 400;
+$weight-normal: 500;
+$weight-medium: 600;
+$weight-semibold: 700;
+$weight-bold: 800;
+$weight-extrabold: 900;
+
+/*
+ |--------------------------------------------------------------------------
+ | Form
+ |--------------------------------------------------------------------------
+ */
+
+$input-shadow: none;
+$label-color: $grey;
+$label-size: $size-small;
+
+/*
+ |--------------------------------------------------------------------------
+ | Navbar
+ |--------------------------------------------------------------------------
+ */
+
+$navbar-height: 3.25rem;
+$navbar-item-hover-background-color: transparent;

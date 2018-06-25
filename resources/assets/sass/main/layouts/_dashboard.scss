@@ -1,0 +1,239 @@
+/*
+ |--------------------------------------------------------------------------
+ | Dashboard Variables
+ |--------------------------------------------------------------------------
+ */
+
+$dashboard-menu-width: 300px;
+$dashboard-menu-width-tablet: 200px;
+
+$dashboard-padding-horizontal: 3rem;
+$dashboard-padding-horizontal-tablet: 1.8rem;
+$dashboard-padding-horizontal-mobile: 1rem;
+
+$dashboard-header-height-mobile: 50px;
+
+/*
+ |--------------------------------------------------------------------------
+ | Dashboard Layout
+ |--------------------------------------------------------------------------
+ */
+
+.dashboard {
+    position: relative;
+    background-color: $white-ter;
+    min-height: 100vh;
+    
+    .container {        
+        min-height: 100vh;
+        max-width: 1600px;
+        width: 100%;
+    }
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Dashboard Menu
+ |--------------------------------------------------------------------------
+ */
+
+.dashboard-menu {
+    position: absolute;
+    height: 100%;
+    width: $dashboard-menu-width;
+    padding-left: 20px;
+    padding-bottom: 30px;
+    border-right: 1px solid rgba(0,0,0,0.05);
+    z-index: 1;
+    overflow-y: auto;
+
+    .delete {
+        display: none;
+    }
+
+    @include touch() {
+        width: $dashboard-menu-width-tablet;
+    }
+    
+    @include mobile() {
+        opacity: 0;
+        visibility: hidden;
+        position: fixed;
+        padding: 0 25px;
+        top: 0;
+        left: 0;
+        width: 95%;
+        max-width: 300px;
+        height: 100%;
+        z-index: 5;
+        border: none;
+        box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+        background-color: #fff;
+        @include transition(0.3s);
+        @include transform(translateX(-60px));
+
+        &.is-active {
+            visibility: visible;
+            opacity: 1;
+            @include transform(translateX(0px));
+        }
+
+        .delete {
+            display: block;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    }
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Dashboard Brand
+ |--------------------------------------------------------------------------
+ */
+
+.dashboard-brand {
+    padding: 30px 0;
+    padding-right: 30px;
+
+    img {
+        width: 100%;
+        max-width: 200px;
+
+        @include mobile() {
+            max-width: 150px;
+        }
+    }
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Dashboard Content
+ |--------------------------------------------------------------------------
+ */
+
+.dashboard-content {
+    position: relative;
+    padding-left: $dashboard-menu-width;
+    padding-right: 0;
+
+    @include touch() {
+        padding-left: $dashboard-menu-width-tablet;
+    }
+
+    @include mobile() {
+        padding: 0;
+    }
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Dashboard Header
+ |--------------------------------------------------------------------------
+ */
+
+.dashboard-header {
+    padding-top: 2rem;
+    padding-bottom: 0;
+    padding-left: $dashboard-padding-horizontal;
+    padding-right: $dashboard-padding-horizontal;
+    position: relative;
+    
+    .breadcrumb {
+        margin: 0;
+        a {
+            padding-top: 0.1em;
+            padding-bottom: 0.1em;
+        }
+    }
+
+    @include touch() {
+        padding-left: $dashboard-padding-horizontal-tablet;
+        padding-right: $dashboard-padding-horizontal-tablet;
+    }
+
+    @include mobile() {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $white;
+        border-bottom: 1px solid $white-dark;
+        padding: 0;
+        padding-right: $dashboard-padding-horizontal-mobile;
+        height: $dashboard-header-height-mobile;
+
+        .title {
+            font-size: $size-medium;
+            margin: 0;
+        }
+
+        .breadcrumb {
+            display: none;
+        }
+    }
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Dashboard Body
+ |--------------------------------------------------------------------------
+ */
+
+.dashboard-body {
+    padding: $dashboard-padding-horizontal;
+
+    @include touch() {
+        padding: $dashboard-padding-horizontal-tablet;
+    }
+
+    @include mobile() {
+        padding: $dashboard-padding-horizontal-mobile;
+    }
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Dashboard Menu Button Open
+ |--------------------------------------------------------------------------
+ */
+
+.dashboard-menu-button-open {
+    display: flex;
+    cursor: pointer;
+    padding: 0 15px;
+    line-height: 1;
+    height: $dashboard-header-height-mobile;
+    align-items: center;
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Dashboard Menu Button Close
+ |--------------------------------------------------------------------------
+ */
+
+.dashboard-menu-button-close {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Dashboard Menu background
+ |--------------------------------------------------------------------------
+ */
+
+.dashboard .dashboard-menu-background {
+    opacity: 0.9;
+    z-index: 5;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

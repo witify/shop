@@ -1,0 +1,91 @@
+/*
+ |--------------------------------------------------------------------------
+ | Button
+ |--------------------------------------------------------------------------
+ */
+
+.button {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Fluid button
+ |--------------------------------------------------------------------------
+ */
+
+.button.is-fluid {
+    width: 100%;
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Grey button
+ |--------------------------------------------------------------------------
+ */
+
+.button.is-grey {
+   
+    background-color: $white-dark;
+    border-color: $white-dark;
+
+    &:hover {
+        border-color: $white-dark;
+        background-color: $white-darker;
+    }
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Fill button (big button with dashed border)
+ |--------------------------------------------------------------------------
+ */
+
+.button.is-fill {
+    width: 100%;
+    border-radius: 4px;
+    padding: 30px 40px;
+    background-color: transparent;
+    border: 2px dashed $grey-lighter;
+    color: $grey;
+    text-align: center;
+    font-weight: $weight-bold;
+    @include transition(0.3s);
+
+    &:hover {
+        background-color: $white;
+    }
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Pad button (very big button with subtle border)
+ |--------------------------------------------------------------------------
+ */
+
+.button.is-pad {
+    color: $grey;
+    width: 100%;
+    text-align: center;
+    padding: 50px 30px;
+    font-weight: $weight-semibold;
+    @include transition(0.3s);
+
+    .icon {
+        color: $primary;
+        margin-right: 15px !important;
+    }
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Link button (low profile button without background)
+ |--------------------------------------------------------------------------
+ */
+
+.link {
+    font-weight: $weight-bold;
+    color: $primary;
+    font-size: $size-normal;
+}

@@ -1,0 +1,42 @@
+os:
+  - linux
+
+sudo: required
+
+language: php
+
+php:
+  - '7.1'
+
+services:
+  - mysql
+
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+
+notifications:
+  slack: witify:iQMLWUFW5PW92BUlHsjbysUq
+
+before_script:
+  - mysql_upgrade
+  - mysql -e 'CREATE DATABASE test;'
+  - mysql -e "CREATE USER 'forge'@'localhost' IDENTIFIED BY 'secret';"
+  - mysql -e "GRANT ALL PRIVILEGES ON * . * TO 'forge'@'localhost';"
+  - composer self-update
+  - composer install --no-interaction
+  - cp .env.travis .env
+  - phpenv rehash
+  - php artisan migrate:fresh
+  - yarn
+  - npm run dev
+  - chmod 777 -R storage
+
+script:
+  - vendor/bin/phpunit --coverage-text
+
+after_success:
+  - curl https://envoyer.io/deploy/X9wpyCbVoaGpuKmRhnideAf5PqkQ5cElukkQIfpX

@@ -1,0 +1,105 @@
+/*
+ |--------------------------------------------------------------------------
+ | Form layout
+ |--------------------------------------------------------------------------
+ |
+ | Standart Hierarchy:
+ |
+ | .form-section > [.form-header, .form-container]
+ | .form-header > [.form-header__title, .form-header__subtitle, .btn]
+ | .form-container > [.form-wrapper, .form-list, .form-sub-header]
+ | .form-list > .form-list__item > [.form-wrapper, .form-list]
+ |
+ */
+
+/** Width of the form header when the form is inline **/
+$formHeaderWidth: 250px;
+
+.form {
+    position: relative;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Form section
+|--------------------------------------------------------------------------
+*/
+
+.form-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+
+    @include until('mobile') {
+        padding: 20px 0;
+    }
+
+    &:last-child {
+        border: none;
+    }
+}
+
+/** Form section with inline header and content **/
+.form-section.is-stacked {
+    position: relative;
+
+    .form-header {
+        position: absolute;
+        width: $formHeaderWidth;
+    }
+    .form-content {
+        padding-left: $formHeaderWidth + 40px;
+    }
+
+    /** Restore standart behavior on small screens **/
+    @include until($desktop) {
+        position: static;
+        .form-header {
+            padding-top: 0;
+            position: static;
+        }
+        .form-content {
+            padding-left: 0;
+        }
+    }
+}
+
+.form-actions {
+    border: none;
+    padding-top: 15px;
+    &:first-child {
+        padding-top: 0;
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Form header
+|--------------------------------------------------------------------------
+*/
+
+.form-header {
+    margin-bottom: 30px;
+    
+    .title {
+        font-size: 1.1rem;
+    }
+    .subtitle {
+        margin-top: -1.3rem !important;
+        font-size: 1rem;
+        color: $grey;
+    }
+    .button {
+        margin: 0;
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Form content
+|--------------------------------------------------------------------------
+*/
+
+.form-content {
+    width: 100%;
+}
