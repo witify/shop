@@ -42,9 +42,9 @@ return [
     */
 
     'lines' => [
-        'taxes' => function($total, $subtotal, $items) {
-            return $subtotal * 0.15;
-        }
+        'shipping' => 'App\Cart\CartLines\ShippingCartLine',
+        'taxes' => 'App\Cart\CartLines\TaxesCartLine',
+        'coupon_code' => 'App\Cart\CartLines\CouponCartLine',
     ]
 
 ];

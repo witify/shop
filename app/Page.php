@@ -26,9 +26,10 @@ class Page extends Model implements IsPage
     protected $fillable = [
         'title',
         'slug',
-        'view',
+        'name',
         'sections',
-        'seo'
+        'seo',
+        'parent_id'
     ];
 
     protected $translatable = [
@@ -45,7 +46,7 @@ class Page extends Model implements IsPage
 
     protected $searchableFields = [
         'title',
-        'view'
+        'name'
     ];
 
     protected $imageStoragePath = 'page';
@@ -90,8 +91,16 @@ class Page extends Model implements IsPage
         if ($this->isHomepage()) {
             return '/' . $locale;
         }
+
+        $url = '/' . $locale . '/';
+
+        $parent = $this->parent;
+        while($parent !== null) {
+            $url .= $parent->getTranslation('slug', $locale) . '/';
+            $parent = $parent->parent;
+        }
         
-        return '/' . $locale . '/' . $this->getTranslation('slug', $locale);
+        return $url . $this->getTranslation('slug', $locale);
     }
 
     /**
@@ -112,5 +121,15 @@ class Page extends Model implements IsPage
     public function isCurrent()
     {
         return str_is('*' . $this->url(), url()->current());
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Page::class, 'parent_id');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Page::class, 'parent_id');
     }
 }

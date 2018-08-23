@@ -11,9 +11,8 @@
                 <span> was added to your cart 😊</span>
             </h1>
             <a href="{{ $product->category->url }}" class="button">Continue shopping</a>
-            <a href="/checkout" class="button is-primary">Go to checkout</a>
+            <a href="{{ $shop['pages']['checkout']->url() }}" class="button is-primary">Go to checkout</a>
         </div>
     </section>
 
 @endsection
-

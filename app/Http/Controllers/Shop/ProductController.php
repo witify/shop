@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Front\Shop;
+namespace App\Http\Controllers\Shop;
 
 use App\Product;
 use App\ProductCategory;
@@ -10,7 +10,7 @@ class ProductController extends FrontController
 {
     public function show($locale, ProductCategory $category, Product $product)
     {
-        $currentPage = $product;
-        return view('app.front.shop.product', compact('product', 'currentPage'));
+        $page = $product;
+        return view('app.shop.product', compact('product', 'page'));
     }
 }

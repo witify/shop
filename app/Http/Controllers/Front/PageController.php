@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use File;
 use App\Page;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Front\FrontController;
 
 class PageController extends FrontController {
@@ -25,17 +26,26 @@ class PageController extends FrontController {
      * @param string $slug
      * @return View
      */
-    public function getPage($locale, $slug = null)
+    public function getPage(Request $request, $locale, $segments = null)
     {
-        if ($slug === null) {
-            return $this->loadHomepage();
+        if ($segments === null) {
+            return $this->loadHomepage($request);
         }
 
-        $locale = app()->getLocale();
+        $page = Page::where('slug->' . $locale, $request->segment(2))->where('parent_id', null)->firstOrFail();
+        
+        $segmentsArray = $request->segments();
+        $segmentsArray = array_slice($segmentsArray, 2); // remove locale and first slug
 
-        $page = Page::where('slug->' . $locale, $slug)->firstOrFail();
+        foreach($segmentsArray as $segment) {
+            $page = $page->children()->where('slug->' . $locale, $segment)->first();
+            if ($page == null) {
+                abort(404);
+                break;
+            }
+        }
 
-        return $this->loadPage($page);
+        return $this->loadPage($page, $request);
     }
 
     /**
@@ -43,11 +53,11 @@ class PageController extends FrontController {
      *
      * @return mixed
      */
-    private function loadHomepage()
+    private function loadHomepage(Request $request)
     {
         $page = Page::homepage();
         if ($page !== null) {
-            return $this->loadPage($page);
+            return $this->loadPage($page, $request);
         }
 
         return 'Homepage not set';
@@ -59,20 +69,20 @@ class PageController extends FrontController {
      * @param Page $page
      * @return View
      */
-    private function loadPage(Page $page)
+    private function loadPage(Page $page, Request $request)
     {
         $this->seo()->setTitle($page->present()->seoAttribute('title'));
         $this->seo()->setDescription($page->present()->seoAttribute('description'));
 
-        $data = [
-            'page' => $page,
-            'currentPage' => $page
-        ];
-
-        if (File::exists(resource_path('views/app/front/pages/' . $page->view . '.blade.php'))) {
-            return view('app.front.pages.' . $page->view, $data);
+        $className = "App\\Page\\" . studly_case(str_replace('.', '-', $page->name)) . "PageLoader";
+        if (class_exists($className)) {
+            return call_user_func($className . '::load', $request, $page);
         }
 
-        return view('app.front.pages.default', $data);
+        if (File::exists(resource_path('views/app/front/pages/' . $page->name . '.blade.php'))) {
+            return view('app.front.pages.' . $page->name, compact('page'));
+        }
+
+        return view('app.front.pages.default', compact('page'));
     }
 }

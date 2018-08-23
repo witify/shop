@@ -49,19 +49,28 @@ class Install extends Command
      */
     public function handle()
     {
-        Artisan::call('migrate:fresh');
-        $this->createDefaultCategory();
-        $this->createDevUser();
-        $this->createAdminUser();
+        if ($this->confirm('This will destroy the database! Continue?')) {
+            Artisan::call('migrate:fresh');
         
-        $this->createAboutText();
+            // Product categories
+            $this->createDefaultCategory();
+            
+            // Users
+            $this->createDevUser();
+            
+            // Globals
+            $this->createAboutText();
 
-        $this->createHomePage();
-        $this->createContactPage();
-        $this->createCartPage();
-        $this->createCheckoutPage();
-        $this->createLoginPage();
-        $this->createRegisterPage();
+            // Front pages
+            $this->createHomePage();
+            $this->createContactPage();
+
+            // Shop pages
+            $this->createCartPages();
+            $this->createCheckoutPages();
+            $this->createLoginPage();
+            $this->createRegisterPage();
+        }
     }
 
     private function createDefaultCategory()
@@ -73,7 +82,7 @@ class Install extends Command
     private function createDevUser()
     {
         User::create([
-            'email' => 'francois@witify.io',
+            'email' => 'dev@witify.io',
             'name' => 'God',
             'password' => bcrypt('secret'),
             'role' => 'dev',
@@ -81,22 +90,6 @@ class Install extends Command
         ]);
 
         $this->info('Dev account created (francois@witify.io)');
-    }
-
-    private function createAdminUser()
-    {
-        $adminName = $this->anticipate("Enter the administrator's name:", ['Shop Master']);
-        $adminEmail = $this->anticipate("Enter the administrator's email:", ['admin@witify.io']);
-
-        User::create([
-            'email' => $adminEmail,
-            'name' => $adminName,
-            'password' => bcrypt('secret'),
-            'role' => 'admin',
-            'api_token' => str_random(60)
-        ]);
-
-        $this->info('Admin account created (' . $adminEmail . ')');
     }
 
     private function createAboutText()
@@ -133,7 +126,7 @@ class Install extends Command
                 'en' => 'home',
                 'fr' => 'home'
             ],
-            'view' => 'home',
+            'name' => 'home',
             'sections' => [
                 '0' => [
                     'id' => 'title',
@@ -164,7 +157,7 @@ class Install extends Command
                 'en' => 'contact',
                 'fr' => 'nous-joindre'
             ],
-            'view' => 'contact',
+            'name' => 'contact',
             'sections' => [],
             'seo' => [
                 'title' => $title,
@@ -175,20 +168,20 @@ class Install extends Command
         $this->info('Contact page created');
     }
 
-    private function createCartPage()
+    private function createCartPages()
     {
         $title = [
             'en' => 'Cart',
             'fr' => 'Panier'
         ];
 
-        Page::create([
+        $cart = Page::create([
             'title' => $title,
             'slug' => [
                 'en' => 'cart',
                 'fr' => 'panier'
             ],
-            'view' => 'cart',
+            'name' => 'cart',
             'sections' => [],
             'seo' => [
                 'title' => $title,
@@ -197,22 +190,44 @@ class Install extends Command
         ]);
 
         $this->info('Cart page created');
+
+        $title = [
+            'en' => 'Add to cart',
+            'fr' => 'Ajout au panier'
+        ];
+
+        Page::create([
+            'title' => $title,
+            'parent_id' => $cart->id,
+            'slug' => [
+                'en' => 'success',
+                'fr' => 'succes'
+            ],
+            'name' => 'cart.success',
+            'sections' => [],
+            'seo' => [
+                'title' => $title,
+                'description' => $title
+            ]
+        ]);
+
+        $this->info('Cart Success page created');
     }
 
-    private function createCheckoutPage()
+    private function createCheckoutPages()
     {
         $title = [
             'en' => 'Checkout',
             'fr' => 'Paiement'
         ];
 
-        Page::create([
+        $checkout = Page::create([
             'title' => $title,
             'slug' => [
                 'en' => 'checkout',
                 'fr' => 'paiement'
             ],
-            'view' => 'checkout',
+            'name' => 'checkout',
             'sections' => [
 
             ],
@@ -223,6 +238,116 @@ class Install extends Command
         ]);
 
         $this->info('Checkout page created');
+
+        $title = [
+            'en' => 'Checkout address',
+            'fr' => 'Addresse du paiement'
+        ];
+
+        Page::create([
+            'title' => $title,
+            'parent_id' => $checkout->id,
+            'slug' => [
+                'en' => 'address',
+                'fr' => 'address'
+            ],
+            'name' => 'checkout.address',
+            'sections' => [],
+            'seo' => [
+                'title' => $title,
+                'description' => $title
+            ]
+        ]);
+
+        $this->info('Checkout Address page created');
+
+        $title = [
+            'en' => 'Checkout shipping',
+            'fr' => 'Choix de la livraison'
+        ];
+
+        Page::create([
+            'title' => $title,
+            'parent_id' => $checkout->id,
+            'slug' => [
+                'en' => 'shipping',
+                'fr' => 'shipping'
+            ],
+            'name' => 'checkout.shipping',
+            'sections' => [],
+            'seo' => [
+                'title' => $title,
+                'description' => $title
+            ]
+        ]);
+
+        $this->info('Checkout Shipping page created');
+
+        $title = [
+            'en' => 'Checkout payment',
+            'fr' => 'Mode de paiement'
+        ];
+
+        Page::create([
+            'title' => $title,
+            'parent_id' => $checkout->id,
+            'slug' => [
+                'en' => 'payment',
+                'fr' => 'payment'
+            ],
+            'name' => 'checkout.payment',
+            'sections' => [],
+            'seo' => [
+                'title' => $title,
+                'description' => $title
+            ]
+        ]);
+
+        $this->info('Checkout Payment page created');
+
+        $title = [
+            'en' => 'Checkout review',
+            'fr' => 'Revue de la commande'
+        ];
+
+        Page::create([
+            'title' => $title,
+            'parent_id' => $checkout->id,
+            'slug' => [
+                'en' => 'review',
+                'fr' => 'review'
+            ],
+            'name' => 'checkout.review',
+            'sections' => [],
+            'seo' => [
+                'title' => $title,
+                'description' => $title
+            ]
+        ]);
+
+        $this->info('Checkout Review page created');
+
+        $title = [
+            'en' => 'Checkout success',
+            'fr' => 'Succès de la commande'
+        ];
+
+        Page::create([
+            'title' => $title,
+            'parent_id' => $checkout->id,
+            'slug' => [
+                'en' => 'success',
+                'fr' => 'success'
+            ],
+            'name' => 'checkout.success',
+            'sections' => [],
+            'seo' => [
+                'title' => $title,
+                'description' => $title
+            ]
+        ]);
+
+        $this->info('Checkout Success page created');
     }
 
     private function createLoginPage()
@@ -238,7 +363,7 @@ class Install extends Command
                 'en' => 'login',
                 'fr' => 'se-connecter'
             ],
-            'view' => 'login',
+            'name' => 'login',
             'sections' => [
                 '0' => [
                     'id' => 'title',
@@ -284,7 +409,7 @@ class Install extends Command
                 'en' => 'register',
                 'fr' => 'creer-un-compte'
             ],
-            'view' => 'register',
+            'name' => 'register',
             'sections' => [
                 '0' => [
                     'id' => 'title',

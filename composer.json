@@ -22,7 +22,9 @@
         "spatie/laravel-backup": "^5.1",
         "spatie/laravel-sitemap": "^4.0",
         "spatie/laravel-translatable": "^2.2",
-        "witify/laravel-cart": "1.0.6",
+        "umpirsky/country-list": "^2.0",
+        "umpirsky/currency-list": "^1.1",
+        "witify/laravel-cart": "^1.0.10",
         "witify/laravel-json-response": "^1.1",
         "witify/laravel-seo-attributes": "^1.0"
     },

@@ -11,7 +11,7 @@
             <div class="form-content">
                 <v-input-locale name="title"></v-input-locale>
                 <v-input-locale name="slug"></v-input-locale>
-                <v-input name="view"></v-input>
+                <v-input name="name"></v-input>
             </div>
         </div>
 
@@ -70,7 +70,7 @@
             this.form = this.$form.create({
                 schema: {
                     title: this.$form.input.locale(),
-                    view: null,
+                    name: null,
                     slug: this.$form.input.locale(),
                     seo: {
                         title: this.$form.input.locale(),

@@ -13,6 +13,6 @@ $factory->define(App\ProductCategory::class, function (Faker $faker) {
             'en' => null,
             'fr' => null
         ],
-        'parent_id' => $faker->numberBetween(2, 10)
+        'parent_id' => $faker->numberBetween(2, 4)
     ];
 });

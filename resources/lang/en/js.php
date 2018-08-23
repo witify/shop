@@ -13,6 +13,9 @@ return [
     
     'input.drop_file' => 'Drop the file or click to upload.',
     'input.submit' => 'Submit',
+    'input.save' => 'Save',
+    'input.add' => 'Add',
+    'input.create' => 'Create',
 
     'label.name' => 'Name',
     'label.email' => 'Email',

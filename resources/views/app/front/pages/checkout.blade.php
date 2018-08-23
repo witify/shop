@@ -1,1 +1,0 @@
-@include('app.front.shop.checkout.index')

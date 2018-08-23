@@ -9,8 +9,8 @@
                 {{ props.row.title[$laravel.app.locale] }}
             </b-table-column>
 
-            <b-table-column field="view" label="View" sortable>
-                {{ props.row.view }}
+            <b-table-column field="name" label="Name" sortable>
+                {{ props.row.name }}
             </b-table-column>
 
             <b-table-column field="slug" label="Slug" sortable>

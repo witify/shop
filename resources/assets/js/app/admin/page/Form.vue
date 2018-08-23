@@ -43,7 +43,7 @@
             this.form = this.$form.create({
                 schema: {
                     title: this.$form.input.locale(),
-                    view: null,
+                    name: null,
                     slug: this.$form.input.locale(),
                     seo: {
                         title: this.$form.input.locale(),

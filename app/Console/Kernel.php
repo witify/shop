@@ -15,7 +15,9 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\Sitemap::class,
         Commands\Production::class,
-        Commands\Shop\Install::class
+        Commands\Shop\Install::class,
+        Commands\Shop\CreateAdmin::class,
+        Commands\Shop\CreateDev::class
     ];
 
     /**

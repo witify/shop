@@ -13,6 +13,9 @@ return [
     
     'input.drop_file' => 'Déposez le fichier ou cliquez pour télécharger.', 
     'input.submit' => 'Envoyer',
+    'input.save' => 'Enregistrer',
+    'input.add' => 'Ajouter',
+    'input.create' => 'Créer',
 
     'label.name' => 'Nom',
     'label.email' => 'Courriel',

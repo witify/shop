@@ -10,7 +10,7 @@
 */
 function price_format($number)
 {
-    return '$' . number_format((float)$number, 2, '.', ',');
+    return number_format((float)$number, 2, '.', ',') . '$';
 }
 
 /*

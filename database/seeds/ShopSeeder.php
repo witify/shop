@@ -11,11 +11,11 @@ class ShopSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\ProductCategory::class, 10)->create([
+        factory(\App\ProductCategory::class, 3)->create([
             'parent_id' => 1
         ]);
 
-        factory(\App\ProductCategory::class, 89)->create();
+        factory(\App\ProductCategory::class, 40)->create();
 
         factory(\App\Product::class, 1000)->create();
     }

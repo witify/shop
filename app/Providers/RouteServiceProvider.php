@@ -50,7 +50,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        //
+        $this->mapMultilingualRoutes();
     }
 
     /**
@@ -65,6 +65,20 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
+    }
+
+    /**
+     * Define the "multilingual" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapMultilingualRoutes()
+    {
+        Route::middleware('multilingual')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/multilingual.php'));
     }
 
     /**

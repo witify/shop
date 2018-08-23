@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Front\Shop;
+namespace App\Http\Controllers\Shop;
 
 use App\ProductCategory;
 use App\Http\Controllers\Front\FrontController;
@@ -10,12 +10,12 @@ class CategoryController extends FrontController
 {
     public function show($locale, ProductCategory $category)
     {
-        $currentPage = $category;
+        $page = $category;
 
         ShopViewComposer::categoryAncestry($category);
 
         $products = $category->products;
 
-        return view('app.front.shop.category.index', compact('category', 'currentPage', 'products'));
+        return view('app.shop.category.index', compact('category', 'page', 'products'));
     }
 }

@@ -21,6 +21,6 @@ $factory->define(App\Product::class, function (Faker $faker) {
             ],
         ],
         'price' => $faker->randomFloat(2, 4, 100),
-        'category_id' => $faker->numberBetween(1, 100)
+        'category_id' => $faker->numberBetween(1, 44)
     ];
 });

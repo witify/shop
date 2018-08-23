@@ -4,7 +4,7 @@
         <div class="container">
 
             <div class="navbar-brand">
-                <a class="navbar-item" href="/">
+                <a class="navbar-item" :href="'/' + $laravel.app.locale">
                     <img :src="$laravel.app.logo" :alt="$laravel.app.name + ' logo'" width="118">
                 </a>
                 <div @click="toggle()" class="navbar-burger" :class="{'is-active': active}">

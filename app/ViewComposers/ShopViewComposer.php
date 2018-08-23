@@ -24,12 +24,12 @@ class ShopViewComposer
 
         $pages = collect();
         $pages['all'] = $this->pages;
-        $pages['home'] = $this->pages->where('id', 1)->first();
-        $pages['contact'] = $this->pages->where('id', 2)->first();
-        $pages['cart'] = $this->pages->where('id', 3)->first();
-        $pages['checkout'] = $this->pages->where('id', 4)->first();
-        $pages['login'] = $this->pages->where('id', 5)->first();
-        $pages['register'] = $this->pages->where('id', 6)->first();
+        $pages['home'] = $this->pages->where('name', 'home')->first();
+        $pages['contact'] = $this->pages->where('name','contact')->first();
+        $pages['cart'] = $this->pages->where('name', 'cart')->first();
+        $pages['checkout'] = $this->pages->where('name', 'checkout')->first();
+        $pages['login'] = $this->pages->where('name', 'login')->first();
+        $pages['register'] = $this->pages->where('name', 'register')->first();
 
         $this->share('pages', $pages);
         $this->share('globals', $this->globals);

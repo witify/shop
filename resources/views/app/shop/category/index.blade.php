@@ -13,7 +13,7 @@
     <section class="section">
         <div class="container">
 
-            @include('app.front.shop.category.breadcrumbs')
+            @include('app.shop.category.breadcrumbs')
 
             <div class="columns is-multiline">
                 @foreach ($category->children as $category)

@@ -39,12 +39,12 @@ Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCall
  |
  */
 
-Route::get('cart', 'Front\Shop\CartController@index');
-Route::get('cart/success', 'Front\Shop\CartController@success');
-Route::post('cart', 'Front\Shop\CartController@add');
-Route::patch('cart', 'Front\Shop\CartController@update');
-Route::delete('cart/{row_id}', 'Front\Shop\CartController@remove');
-Route::post('cart/get_price', 'Front\Shop\CartController@getPrice');
+Route::post('cart', 'Shop\CartController@add');
+Route::patch('cart', 'Shop\CartController@update');
+Route::delete('cart/coupon', 'Shop\CartController@removeCoupon');
+Route::post('cart/get_price', 'Shop\CartController@getPrice');
+Route::post('cart/coupon', 'Shop\CartController@addCoupon');
+Route::delete('cart/{row_id}', 'Shop\CartController@remove');
 
 /*
  |--------------------------------------------------------------------------
@@ -132,47 +132,9 @@ Route::group(['middleware' => 'auth'], function() {
 
 /*
 |--------------------------------------------------------------------------
-| Multilocale routes
-|--------------------------------------------------------------------------
-|
-*/
-
-Route::group(['prefix' => '{locale}'], function() {
-
-    /*
-    |--------------------------------------------------------------------------
-    | Page routes
-    |--------------------------------------------------------------------------
-    |
-    */
-
-    Route::get('/{slug?}', 'Front\PageController@getPage');
-
-    /*
-    |--------------------------------------------------------------------------
-    | Category routes
-    |--------------------------------------------------------------------------
-    |
-    */
-
-    Route::get('/shop/{category}', 'Front\Shop\CategoryController@show');
-    
-    /*
-    |--------------------------------------------------------------------------
-    | Product routes
-    |--------------------------------------------------------------------------
-    |
-    */
-
-    Route::get('/shop/{category}/{product}', 'Front\Shop\ProductController@show');
-});
-
-/*
-|--------------------------------------------------------------------------
 | Front routes
 |--------------------------------------------------------------------------
 |
 */
 
 Route::post('contact', 'Front\ContactController@contact');
-

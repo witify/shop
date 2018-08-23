@@ -99,9 +99,9 @@ return [
     |
     */
 
-    'custom'               => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+    'custom' => [
+        'coupon' => [
+            'exists' => "Ce coupon n'existe pas",
         ],
     ],
 
