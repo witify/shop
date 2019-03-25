@@ -24,7 +24,7 @@
         "spatie/laravel-translatable": "^2.2",
         "umpirsky/country-list": "^2.0",
         "umpirsky/currency-list": "^1.1",
-        "witify/laravel-cart": "^1.0.10",
+        "witify/laravel-cart": "^1.0.12",
         "witify/laravel-json-response": "^1.1",
         "witify/laravel-seo-attributes": "^1.0"
     },

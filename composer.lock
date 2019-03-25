@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e8410054c6cd0c23ce2cd25d8d8e0bd",
+    "content-hash": "cccb2bf0ae316aacbe942faf3115cdf8",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4213,16 +4213,16 @@
         },
         {
             "name": "witify/laravel-cart",
-            "version": "1.0.10",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Witify/laravel-cart.git",
-                "reference": "171e545fe963c824dc76a1e2563d2e54d62d8145"
+                "reference": "4045999f3288bb387aa9a1149182f7cf7bfeb9ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Witify/laravel-cart/zipball/171e545fe963c824dc76a1e2563d2e54d62d8145",
-                "reference": "171e545fe963c824dc76a1e2563d2e54d62d8145",
+                "url": "https://api.github.com/repos/Witify/laravel-cart/zipball/4045999f3288bb387aa9a1149182f7cf7bfeb9ac",
+                "reference": "4045999f3288bb387aa9a1149182f7cf7bfeb9ac",
                 "shasum": ""
             },
             "require": {
@@ -4268,7 +4268,7 @@
                 "cart",
                 "laravel"
             ],
-            "time": "2018-08-22T19:27:51+00:00"
+            "time": "2018-08-24T17:15:41+00:00"
         },
         {
             "name": "witify/laravel-json-response",
